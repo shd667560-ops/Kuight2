@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ข้อสอบวัดความรู้รอบตัว 30 ข้อ 🧠✨</title>
+  <title>ข้อสอบแฟนพันธุ์แท้ประเทศไทย 30 ข้อ 🇹🇭✨</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Kanit', sans-serif, system-ui; }
-    body { background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow: hidden; }
+    body { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%); display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow: hidden; }
     .container { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); width: 90%; max-width: 400px; text-align: center; position: relative; }
     
     .sticker { font-size: 55px; animation: bounce 1.2s infinite ease-in-out; margin-bottom: 5px; display: inline-block; }
@@ -16,8 +16,8 @@
     .question { font-size: 0.98rem; color: #444; margin-bottom: 15px; font-weight: bold; line-height: 1.4; }
     
     .options { display: flex; flex-direction: column; gap: 9px; position: relative; min-height: 180px; }
-    .btn-opt { padding: 11px; border-radius: 12px; border: 2px solid #2196f3; background: white; color: #1976d2; font-size: 0.88rem; font-weight: bold; cursor: pointer; transition: background 0.2s; }
-    .btn-opt:hover { background: #e3f2fd; }
+    .btn-opt { padding: 11px; border-radius: 12px; border: 2px solid #e91e63; background: white; color: #c2185b; font-size: 0.88rem; font-weight: bold; cursor: pointer; transition: background 0.2s; }
+    .btn-opt:hover { background: #f8bbd0; }
     
     .btn-troll { position: absolute; transition: all 0.15s ease; border-color: #ff9800; color: #e65100; width: 100%; left: 0; }
     
@@ -26,9 +26,9 @@
     .correct { color: #4caf50; }
 
     .result-box { display: none; animation: popIn 0.4s ease; }
-    .score-badge { font-size: 2.2rem; color: #1976d2; font-weight: bold; margin: 10px 0; }
-    .title-badge { background: #e3f2fd; color: #0d47a1; padding: 8px 15px; border-radius: 20px; font-weight: bold; display: inline-block; margin-bottom: 15px; font-size: 0.85rem; }
-    .restart-btn { margin-top: 20px; padding: 10px 20px; background: #2196f3; color: white; border: none; border-radius: 12px; font-size: 1rem; cursor: pointer; font-weight: bold; box-shadow: 0 4px 10px rgba(33, 150, 243, 0.3); }
+    .score-badge { font-size: 2.2rem; color: #d81b60; font-weight: bold; margin: 10px 0; }
+    .title-badge { background: #f8bbd0; color: #880e4f; padding: 8px 15px; border-radius: 20px; font-weight: bold; display: inline-block; margin-bottom: 15px; font-size: 0.85rem; }
+    .restart-btn { margin-top: 20px; padding: 10px 20px; background: #e91e63; color: white; border: none; border-radius: 12px; font-size: 1rem; cursor: pointer; font-weight: bold; box-shadow: 0 4px 10px rgba(233, 30, 99, 0.3); }
 
     @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
     @keyframes popIn { from { transform: scale(0.6); opacity: 0; } to { transform: scale(1); opacity: 1; } }
@@ -40,8 +40,8 @@
     
     <!-- หน้าทำข้อสอบ -->
     <div id="quizStep">
-      <div class="sticker" id="stickerEmoji">🧐</div>
-      <h2 id="quizTitle">ข้อสอบความรู้ทั่วไป (ข้อที่ 1/30)</h2>
+      <div class="sticker" id="stickerEmoji">🇹🇭</div>
+      <h2 id="quizTitle">แฟนพันธุ์แท้เมืองไทย (ข้อที่ 1/30)</h2>
       <div class="quiz-box">
         <p class="question" id="questionText">คำถามจะขึ้นตรงนี้</p>
         <div class="options" id="optionsBox"></div>
@@ -51,12 +51,12 @@
 
     <!-- หน้าเฉลย / สรุปผล -->
     <div class="result-box" id="resultStep">
-      <div class="sticker">🏆🤡</div>
-      <h2>สรุปผลคะแนนอย่างเป็นทางการ</h2>
+      <div class="sticker">🏆🐘✨</div>
+      <h2>สรุปผลคะแนนความเป็นไทย</h2>
       <div class="score-badge" id="finalScore">คะแนน: 0 / 30</div>
       <div class="title-badge" id="finalTitle">ฉายา: กำลังประเมิน...</div>
       <p style="color: #666; line-height: 1.6; margin-top: 10px; font-size: 0.88rem;" id="finalDesc">
-        นั่งกดทำจนครบ 30 ข้อได้ขนาดนี้ ถือว่ามีความอดทนสูงมาก! 🤣
+        ทำข้อสอบเกี่ยวกับประเทศไทยครบ 30 ข้อได้ขนาดนี้ ถือว่ามีความเป็นไทยเต็มร้อยจริงๆ! 🤣
       </p>
       <button class="restart-btn" onclick="location.reload()">ลองใหม่อีกรอบ 🔄</button>
     </div>
@@ -69,47 +69,45 @@
     let dodgeCount = 0;
 
     const quizData = [
-      { emoji: '🍎', q: '1. ผลไม้ชนิดใดมีสีแดง?', opts: ['แอปเปิ้ล 🍎', 'กล้วย 🍌', 'มะพร้าว 🥥'], correct: 0 },
-      { emoji: '🐶', q: '2. สัตว์ชนิดใดร้อง "โฮ่งๆ"?', opts: ['แมว 🐱', 'สุนัข 🐶', 'ไก่ 🐔'], correct: 1 },
-      { emoji: '☀️', q: '3. ดวงอาทิตย์ขึ้นทางทิศไหน?', opts: ['ทิศตะวันตก 🌇', 'ทิศเหนือ 🧭', 'ทิศตะวันออก 🌅'], correct: 2 },
-      { emoji: '🔢', q: '4. 5 + 5 เท่ากับเท่าไหร่?', opts: ['10 💯', '15 ❌', '55 🤖'], correct: 0 },
-      { emoji: '🇹🇭', q: '5. เมืองหลวงของประเทศไทยคืออะไร?', opts: ['เชียงใหม่ 🏔️', 'กรุงเทพมหานคร 🏙️', 'พัทยา 🏖️'], correct: 1 },
-      { emoji: '❄️', q: '6. น้ำแข็งทำมาจากอะไร?', opts: ['น้ำเปล่า 💧', 'นมสด 🥛', 'น้ำซุป 🍜'], correct: 0 },
-      { emoji: '🚗', q: '7. สัญญาณไฟจราจรสีแดงหมายถึงอะไร?', opts: ['ให้ไปได้ 🟢', 'ให้ชะลอ 🟡', 'ให้หยุด 🔴'], correct: 2 },
-      { emoji: '🐟', q: '8. ปลาอาศัยอยู่ที่ไหนเป็นหลัก?', opts: ['บนต้นไม้ 🌳', 'ในน้ำ 🌊', 'บนอวกาศ 🚀'], correct: 1 },
-      { emoji: '🌙', q: '9. ตอนกลางคืนเรามักจะมองเห็นอะไรบนฟ้า?', opts: ['ดวงจันทร์ 🌙', 'ดวงอาทิตย์ ☀️', 'รุ้งกินน้ำ 🌈'], correct: 0 },
-      { emoji: '🐘', q: '10. สัตว์ประจำชาติไทยคือสัตว์ชนิดใด?', opts: ['เสือ 🐅', 'ช้าง 🐘', 'ม้า 🐎'], correct: 1 },
-      { emoji: '🐝', q: '11. ผึ้งสร้างสิ่งใดที่หวานตักกินได้?', opts: ['น้ำผึ้ง 🍯', 'น้ำนม 🥛', 'น้ำซอส 🧴'], correct: 0 },
-      { emoji: '🌈', q: '12. รุ้งกินน้ำตามธรรมชาติมีกี่สี?', opts: ['5 สี 🖐️', '7 สี 🌈', '10 สี 🔟'], correct: 1 },
-      { emoji: '🦷', q: '13. คนเราปกติมีฟันน้ำนมชุดแรกกี่ซี่?', opts: ['20 ซี่ 🦷', '32 ซี่ 😁', '50 ซี่ 🦈'], correct: 0 },
-      { emoji: '⚽', q: '14. กีฬาฟุตบอลใช้ผู้เล่นในสนามฝั่งละกี่คน?', opts: ['7 คน 🏃', '11 คน ⚽', '15 คน 🤾'], correct: 1 },
-      { emoji: '🌍', q: '15. โลกของเราเป็นดาวเคราะห์ลำดับที่เท่าไหร่จากดวงอาทิตย์?', opts: ['ลำดับที่ 1 🥇', 'ลำดับที่ 3 🥉', 'ลำดับที่ 5 🖐️'], correct: 1 },
-      { emoji: '🐱', q: '16. แมวมีกี่ขา?', opts: ['2 ขา 🚶', '4 ขา 🐾', '6 ขา 🐜'], correct: 1 },
-      { emoji: '⏱️', q: '1 ชั่วโมง มีกี่นาที?', opts: ['30 นาที ⏱️', '60 นาที ⌛', '100 นาที 💯'], correct: 1 },
-      { emoji: '🩸', q: '18. เลือดของมนุษย์ปกติมีสีอะไร?', opts: ['สีแดง 🔴', 'สีน้ำเงิน 🔵', 'สีเขียว 🟢'], correct: 0 },
-      { emoji: '🐧', q: '19. เพนกวิน จัดเป็นสัตว์ประเภทใด?', opts: ['สัตว์เลื้อยคลาน 🦎', 'นก 🐧', 'ปลา 🐟'], correct: 1 },
-      { emoji: '🐼', q: '20. หมีแพนด้า ชอบกินอะไรเป็นอาหารหลัก?', opts: ['เนื้อสัตว์ 🥩', 'ไผ่ 🎍', 'กล้วย 🍌'], correct: 1 },
-      { emoji: '🧂', q: '21. เกลือมีรสชาติอย่างไร?', opts: ['หวาน 🍬', 'เค็ม 🧂', 'เปรี้ยว 🍋'], correct: 1 },
-      { emoji: '🍋', q: '22. มะนาวมีรสชาติอย่างไร?', opts: ['เปรี้ยว 🍋', 'ขม ☕', 'เผ็ด 🌶️'], correct: 0 },
-      { emoji: '🕷️', q: '23. แมงมุมมีกี่ขา?', opts: ['6 ขา 🐜', '8 ขา 🕷️', '10 ขา 🦀'], correct: 1 },
-      { emoji: '✈️', q: '24. ยานพาหนะชนิดใดใช้เดินทางบนอากาศ?', opts: ['เรือ 🚢', 'รถไฟ 🚆', 'เครื่องบิน ✈️'], correct: 2 },
-      { emoji: '📱', q: '25. สิ่งใดใช้สำหรับโทรติดต่อสื่อสาร?', opts: ['โทรศัพท์ 📱', 'พัดลม 🌬️', 'หม้อหุงข้าว 🍚'], correct: 0 },
-      { emoji: '🐸', q: '26. กบตอนเป็นตัวอ่อนเรียกว่าอะไร?', opts: ['ลูกเจี๊ยบ 🐥', 'ลูกอ๊อด 🐸', 'ลูกหนู 🐭'], correct: 1 },
-      { emoji: '🧊', q: '27. น้ำเปลี่ยนสถานะเป็นน้ำแข็งเมื่อโดนอะไร?', opts: ['ความร้อน 🔥', 'ความเย็น ❄️', 'ความลม 🌬️'], correct: 1 },
-      { emoji: '🌋', q: '28. ภูเขาไฟพ่นสิ่งใดออกมาตอนระเบิด?', opts: ['ลาวา 🌋', 'น้ำแข็ง 🧊', 'ดอกไม้ 🌸'], correct: 0 },
-      { emoji: '🎵', q: '29. ตัวโน้ตตัวแรกในสเกลคือตัวอะไร?', opts: ['โด (Do) 🎵', 'เร (Re) 🎶', 'มี (Mi) 🎼'], correct: 0 },
+      { q: '1. เมืองหลวงของประเทศไทยคือเมืองอะไร?', opts: ['เชียงใหม่', 'กรุงเทพมหานคร', 'พัทยา'], correct: 1 },
+      { q: '2. สัตว์ประจำชาติไทยคืออะไร?', opts: ['เสือโคร่ง', 'ช้างไทย', 'ม้าลำพอง'], correct: 1 },
+      { q: '3. ดอกไม้ประจำชาติไทยคือดอกอะไร?', opts: ['ดอกมะลิ', 'ดอกราชพฤกษ์ (คูน)', 'ดอกกุหลาบ'], correct: 1 },
+      { q: '4. เมนูต้มยำชนิดใดที่มีชื่อเสียงไปทั่วโลก?', opts: ['ต้มยำกุ้ง', 'ต้มยำไก่', 'ต้มยำปลา'], correct: 0 },
+      { q: '5. ยานพาหนะสามล้อเอกลักษณ์ของไทยเรียกว่าอะไร?', opts: ['รถแท็กซี่', 'รถตุ๊กตุ๊ก', 'รถสองแถว'], correct: 1 },
+      { q: '6. ศิลปะการต่อสู้ประจำชาติไทยคืออะไร?', opts: ['มวยไทย', 'เทควันโด', 'ยูโด'], correct: 0 },
+      { q: '7. เกาะที่ใหญ่ที่สุดในประเทศไทยคือเกาะอะไร?', opts: ['เกาะสมุย', 'เกาะเสม็ด', 'เกาะภูเก็ต'], correct: 2 },
+      { q: '8. ยอดเขาที่สูงที่สุดในประเทศไทยคือยอดเขาใด?', opts: ['ดอยอินทนนท์', 'ดอยสุเทพ', 'ภูกระดึง'], correct: 0 },
+      { q: '9. ขนมหวานไทยเมนูใดที่มักกินคู่กับมะม่วงสุก?', opts: ['ข้าวเหนียวมะม่วง', 'ทับทิมกรอบ', 'ทองหยิบ'], correct: 0 },
+      { q: '10. พยัญชนะไทยมีทั้งหมดกี่ตัว?', opts: ['40 ตัว', '44 ตัว', '50 ตัว'], correct: 1 },
+      { q: '11. เพลงชาติไทยจะเปิดเคารพธงชาติทุกวันเวลาใดบ้าง?', opts: ['08:00 น. และ 18:00 น.', '07:00 น. และ 17:00 น.', '09:00 น. และ 20:00 น.'], correct: 0 },
+      { q: '12. ประเพณีไทยประเพณีใดที่มีการเล่นสาดน้ำในเดือนเมษายน?', opts: ['ประเพณีวันลอยกระทง', 'ประเพณีวันสงกรานต์', 'ประเพณีบุญบั้งไฟ'], correct: 1 },
+      { q: '13. ประเพณีลอยกระทงมักจัดขึ้นในคืนวันเพ็ญเดือนอะไร?', opts: ['เดือน 10', 'เดือน 12', 'เดือน 1'], correct: 1 },
+      { q: '14. แม่น้ำสายหลักที่ไหลผ่านกรุงเทพมหานครคือแม่น้ำอะไร?', opts: ['แม่น้ำแม่กลอง', 'แม่น้ำเจ้าพระยา', 'แม่น้ำชี'], correct: 1 },
+      { q: '15. ประเทศไทยแบ่งออกเป็นกี่ภาคหลักๆ (ตามเกณฑ์ภูมิศาสตร์)?', opts: ['4 ภาค', '6 ภาค', '8 ภาค'], correct: 1 },
+      { q: '16. สกุลเงินที่ใช้ในประเทศไทยเรียกว่าอะไร?', opts: ['ดอลลาร์', 'บาท', 'เยน'], correct: 1 },
+      { q: '17. ธงชาติไทย (ธงไตรรงค์) มีทั้งหมดกี่สี?', opts: ['3 สี (แดง ขาว น้ำเงิน)', '4 สี', '5 สี'], correct: 0 },
+      { q: '18. แกงไทยประเภทใดที่มีเอกลักษณ์ใส่กะทิและพริกแกงสีเขียว?', opts: ['แกงส้ม', 'แกงเขียวหวาน', 'แกงป่า'], correct: 1 },
+      { q: '19. ผลไม้ไทยชนิดใดได้ชื่อว่าเป็น "ราชาแห่งผลไม้"?', opts: ['มังคุด', 'ทุเรียน', 'มะม่วง'], correct: 1 },
+      { q: '20. ผลไม้ไทยชนิดใดได้ชื่อว่าเป็น "ราชินีแห่งผลไม้"?', opts: ['มังคุด', 'เงาะ', 'ลำไย'], correct: 0 },
+      { q: '21. วัดอรุณราชวราราม ตั้งอยู่ริมแม่น้ำใด?', opts: ['แม่น้ำเจ้าพระยา', 'แม่น้ำบางปะกง', 'แม่น้ำตาปี'], correct: 0 },
+      { q: '22. เมนู "ส้มตำ" มีสัญลักษณ์ดั้งเดิมมาจากภาคใดของไทย?', opts: ['ภาคเหนือ', 'ภาคอีสาน', 'ภาคใต้'], correct: 1 },
+      { q: '23. สนามบินนานาชาติหลักที่ใหญ่ที่สุดในไทยคือสนามบินใด?', opts: ['ดอนเมือง', 'สุวรรณภูมิ', 'เชียงใหม่'], correct: 1 },
+      { q: '24. ผ้าทอมือที่เป็นเอกลักษณ์ชื่อดังของไทยคือผ้าชนิดใด?', opts: ['ผ้าไหมไทย', 'ผ้าฝ้ายขนหนู', 'ผ้าเช็ดหน้า'], correct: 0 },
+      { q: '25. อุทยานแห่งชาติแห่งแรกของประเทศไทยคืออุทยานแห่งชาติใด?', opts: ['เขาใหญ่', 'ดอยอินทนนท์', 'เอราวัณ'], correct: 0 },
+      { q: '26. เมนู "ผัดไทย" รสชาติตามตำรับมักจะใส่อะไรให้กลมกล่อม?', opts: ['น้ำมะขามเปียก', 'น้ำส้มสายชู', 'น้ำมะนาวขวด'], correct: 0 },
+      { q: '27. สัตว์ในวรรณคดีไทยที่มีตัวเป็นหงส์หัวเป็นมังกรหรือพญานาคเรียกว่าอะไร?', opts: ['กินรี', 'มักกะลีผล', 'สุพรรณหงส์ / สัตว์หิมพานต์'], correct: 2 },
+      { q: '28. เสาชิงช้า เป็นโบราณสถานสำคัญที่ตั้งอยู่ในจังหวัดใด?', opts: ['เชียงใหม่', 'กรุงเทพมหานคร', 'อยุธยา'], correct: 1 },
+      { q: '29. ข้าวซอย เป็นอาหารขึ้นชื่อดั้งเดิมของภาคใดในไทย?', opts: ['ภาคใต้', 'ภาคเหนือ', 'ภาคกลาง'], correct: 1 },
       { 
-        emoji: '🤡', 
-        q: '30. ข้อสุดท้าย! คนที่ส่งลิงก์นี้ให้คุณ เป็นคนยังไง?', 
-        opts: ['หล่อ/สวย และฉลาดมาก ✨', 'หน้าตาธรรมดา 😐', 'นิสัยไม่ดี 💩'], 
+        q: '30. ข้อสุดท้าย! คุณคิดว่าคนที่ส่งลิงก์นี้ให้คุณ เป็นคนยังไง?', 
+        opts: ['หล่อ/สวย และฉลาดที่สุดในไทย ✨', 'หน้าตาธรรมดา 😐', 'นิสัยไม่ดี 💩'], 
         correct: 0 
       }
     ];
 
     function renderQuiz() {
       const data = quizData[currentStep];
-      document.getElementById('stickerEmoji').innerText = data.emoji;
-      document.getElementById('quizTitle').innerText = `ข้อสอบความรู้ทั่วไป (ข้อที่ ${currentStep + 1}/30)`;
+      document.getElementById('quizTitle').innerText = `แฟนพันธุ์แท้เมืองไทย (ข้อที่ ${currentStep + 1}/30)`;
       document.getElementById('questionText').innerText = data.q;
       document.getElementById('feedbackMsg').innerText = '';
 
@@ -128,7 +126,7 @@
       } else {
         // ข้อ 30 (ข้อกวน: ปุ่มคำตอบถูกจะวิ่งหนี)
         box.innerHTML = `
-          <button class="btn-opt btn-troll" id="correctBtn" onmouseover="dodge()" onclick="dodge()" ontouchstart="dodge()" style="top: 0px;">หล่อ/สวย และฉลาดมาก ✨ (คำตอบที่ถูก)</button>
+          <button class="btn-opt btn-troll" id="correctBtn" onmouseover="dodge()" onclick="dodge()" ontouchstart="dodge()" style="top: 0px;">หล่อ/สวย และฉลาดที่สุดในไทย ✨ (คำตอบที่ถูก)</button>
           <button class="btn-opt" onclick="checkAnswer(1)" style="margin-top: 55px;">หน้าตาธรรมดา 😐</button>
           <button class="btn-opt" onclick="checkAnswer(2)">นิสัยไม่ดี 💩</button>
         `;
@@ -142,7 +140,7 @@
       if (selectedIndex === data.correct) {
         score++;
         feedback.className = 'feedback correct';
-        feedback.innerText = 'ถูกต้องแล้ว! 🎉';
+        feedback.innerText = 'ถูกต้องแล้วครับ! 🎉';
       } else {
         feedback.className = 'feedback wrong';
         feedback.innerText = 'ตอบผิดนะเนี่ย! ❌';
@@ -184,17 +182,17 @@
       const descEl = document.getElementById('finalDesc');
 
       if (score === 30) {
-        titleEl.innerText = 'ฉายา: เทพเจ้าแห่งความรู้ 🧠✨';
-        descEl.innerText = 'สุดยอดเกินไปแล้ว! ตอบถูกหมดทั้ง 30 ข้อ แถมชนะปุ่มเด้งหนีในข้อสุดท้ายได้ด้วย!';
+        titleEl.innerText = 'ฉายา: แฟนพันธุ์แท้เมืองไทยขั้นเทพ 🇹🇭✨';
+        descEl.innerText = 'สุดยอดมากๆ! รู้เรื่องเมืองไทยตอบถูกหมด 30 ข้อ แถมชนะปุ่มเด้งหนีได้ด้วย!';
       } else if (score >= 20) {
-        titleEl.innerText = 'ฉายา: สมองระดับอัจฉริยะ 😎';
-        descEl.innerText = 'ความรู้แน่นสุดๆ ตอบถูกเกิน 20 ข้อขึ้นไป ถือว่าเก่งมาก!';
+        titleEl.innerText = 'ฉายา: คนไทยหัวใจเต็มร้อย 😎';
+        descEl.innerText = 'ความรู้รอบตัวแน่นมาก! ตอบถูกเกิน 20 ข้อขึ้นไป ถือว่ารอบรู้สุดๆ';
       } else if (score >= 10) {
-        titleEl.innerText = 'ฉายา: พอตัวอยู่นะเนี่ย 👍';
-        descEl.innerText = 'ได้คะแนนปานกลาง เอาตัวรอดได้สบายๆ!';
+        titleEl.innerText = 'ฉายา: คนไทยพอตัว 👍';
+        descEl.innerText = 'ได้คะแนนปานกลาง พอเอาตัวรอดในไทยได้สบาย!';
       } else {
-        titleEl.innerText = 'ฉายา: สมองพักผ่อน 💤';
-        descEl.innerText = 'ตอบผิดเยอะมาก! ไปนอนพักผ่อนด่วนเลยนะเพื่อน 🤣';
+        titleEl.innerText = 'ฉายา: ต้องไปเที่ยวไทยเพิ่มแล้ว 💤';
+        descEl.innerText = 'ตอบผิดเยอะไปหน่อยนะ! ลองไปเที่ยวและศึกษาเรื่องเมืองไทยเพิ่มด่วน 🤣';
       }
     }
 
