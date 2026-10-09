@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ข้อสอบวัดความรู้รอบตัว 30 ข้อ 🧠✨</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Kanit', sans-serif, system-ui; }
+    body { background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow: hidden; }
+    .container { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); width: 90%; max-width: 400px; text-align: center; position: relative; }
+    
+    .sticker { font-size: 55px; animation: bounce 1.2s infinite ease-in-out; margin-bottom: 5px; display: inline-block; }
+    h2 { color: #333; margin-bottom: 12px; font-size: 1.1rem; }
+    
+    .quiz-box { margin-top: 10px; }
+    .question { font-size: 0.98rem; color: #444; margin-bottom: 15px; font-weight: bold; line-height: 1.4; }
+    
+    .options { display: flex; flex-direction: column; gap: 9px; position: relative; min-height: 180px; }
+    .btn-opt { padding: 11px; border-radius: 12px; border: 2px solid #2196f3; background: white; color: #1976d2; font-size: 0.88rem; font-weight: bold; cursor: pointer; transition: background 0.2s; }
+    .btn-opt:hover { background: #e3f2fd; }
+    
+    .btn-troll { position: absolute; transition: all 0.15s ease; border-color: #ff9800; color: #e65100; width: 100%; left: 0; }
+    
+    .feedback { height: 25px; font-weight: bold; font-size: 0.9rem; margin-top: 5px; }
+    .wrong { color: #f44336; }
+    .correct { color: #4caf50; }
+
+    .result-box { display: none; animation: popIn 0.4s ease; }
+    .score-badge { font-size: 2.2rem; color: #1976d2; font-weight: bold; margin: 10px 0; }
+    .title-badge { background: #e3f2fd; color: #0d47a1; padding: 8px 15px; border-radius: 20px; font-weight: bold; display: inline-block; margin-bottom: 15px; font-size: 0.85rem; }
+    .restart-btn { margin-top: 20px; padding: 10px 20px; background: #2196f3; color: white; border: none; border-radius: 12px; font-size: 1rem; cursor: pointer; font-weight: bold; box-shadow: 0 4px 10px rgba(33, 150, 243, 0.3); }
+
+    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    @keyframes popIn { from { transform: scale(0.6); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- หน้าทำข้อสอบ -->
+    <div id="quizStep">
+      <div class="sticker" id="stickerEmoji">🧐</div>
+      <h2 id="quizTitle">ข้อสอบความรู้ทั่วไป (ข้อที่ 1/30)</h2>
+      <div class="quiz-box">
+        <p class="question" id="questionText">คำถามจะขึ้นตรงนี้</p>
+        <div class="options" id="optionsBox"></div>
+        <div class="feedback" id="feedbackMsg"></div>
+      </div>
+    </div>
+
+    <!-- หน้าเฉลย / สรุปผล -->
+    <div class="result-box" id="resultStep">
+      <div class="sticker">🏆🤡</div>
+      <h2>สรุปผลคะแนนอย่างเป็นทางการ</h2>
+      <div class="score-badge" id="finalScore">คะแนน: 0 / 30</div>
+      <div class="title-badge" id="finalTitle">ฉายา: กำลังประเมิน...</div>
+      <p style="color: #666; line-height: 1.6; margin-top: 10px; font-size: 0.88rem;" id="finalDesc">
+        นั่งกดทำจนครบ 30 ข้อได้ขนาดนี้ ถือว่ามีความอดทนสูงมาก! 🤣
+      </p>
+      <button class="restart-btn" onclick="location.reload()">ลองใหม่อีกรอบ 🔄</button>
+    </div>
+
+  </div>
+
+  <script>
+    let currentStep = 0;
+    let score = 0;
+    let dodgeCount = 0;
+
+    const quizData = [
+      { emoji: '🍎', q: '1. ผลไม้ชนิดใดมีสีแดง?', opts: ['แอปเปิ้ล 🍎', 'กล้วย 🍌', 'มะพร้าว 🥥'], correct: 0 },
+      { emoji: '🐶', q: '2. สัตว์ชนิดใดร้อง "โฮ่งๆ"?', opts: ['แมว 🐱', 'สุนัข 🐶', 'ไก่ 🐔'], correct: 1 },
+      { emoji: '☀️', q: '3. ดวงอาทิตย์ขึ้นทางทิศไหน?', opts: ['ทิศตะวันตก 🌇', 'ทิศเหนือ 🧭', 'ทิศตะวันออก 🌅'], correct: 2 },
+      { emoji: '🔢', q: '4. 5 + 5 เท่ากับเท่าไหร่?', opts: ['10 💯', '15 ❌', '55 🤖'], correct: 0 },
+      { emoji: '🇹🇭', q: '5. เมืองหลวงของประเทศไทยคืออะไร?', opts: ['เชียงใหม่ 🏔️', 'กรุงเทพมหานคร 🏙️', 'พัทยา 🏖️'], correct: 1 },
+      { emoji: '❄️', q: '6. น้ำแข็งทำมาจากอะไร?', opts: ['น้ำเปล่า 💧', 'นมสด 🥛', 'น้ำซุป 🍜'], correct: 0 },
+      { emoji: '🚗', q: '7. สัญญาณไฟจราจรสีแดงหมายถึงอะไร?', opts: ['ให้ไปได้ 🟢', 'ให้ชะลอ 🟡', 'ให้หยุด 🔴'], correct: 2 },
+      { emoji: '🐟', q: '8. ปลาอาศัยอยู่ที่ไหนเป็นหลัก?', opts: ['บนต้นไม้ 🌳', 'ในน้ำ 🌊', 'บนอวกาศ 🚀'], correct: 1 },
+      { emoji: '🌙', q: '9. ตอนกลางคืนเรามักจะมองเห็นอะไรบนฟ้า?', opts: ['ดวงจันทร์ 🌙', 'ดวงอาทิตย์ ☀️', 'รุ้งกินน้ำ 🌈'], correct: 0 },
+      { emoji: '🐘', q: '10. สัตว์ประจำชาติไทยคือสัตว์ชนิดใด?', opts: ['เสือ 🐅', 'ช้าง 🐘', 'ม้า 🐎'], correct: 1 },
+      { emoji: '🐝', q: '11. ผึ้งสร้างสิ่งใดที่หวานตักกินได้?', opts: ['น้ำผึ้ง 🍯', 'น้ำนม 🥛', 'น้ำซอส 🧴'], correct: 0 },
+      { emoji: '🌈', q: '12. รุ้งกินน้ำตามธรรมชาติมีกี่สี?', opts: ['5 สี 🖐️', '7 สี 🌈', '10 สี 🔟'], correct: 1 },
+      { emoji: '🦷', q: '13. คนเราปกติมีฟันน้ำนมชุดแรกกี่ซี่?', opts: ['20 ซี่ 🦷', '32 ซี่ 😁', '50 ซี่ 🦈'], correct: 0 },
+      { emoji: '⚽', q: '14. กีฬาฟุตบอลใช้ผู้เล่นในสนามฝั่งละกี่คน?', opts: ['7 คน 🏃', '11 คน ⚽', '15 คน 🤾'], correct: 1 },
+      { emoji: '🌍', q: '15. โลกของเราเป็นดาวเคราะห์ลำดับที่เท่าไหร่จากดวงอาทิตย์?', opts: ['ลำดับที่ 1 🥇', 'ลำดับที่ 3 🥉', 'ลำดับที่ 5 🖐️'], correct: 1 },
+      { emoji: '🐱', q: '16. แมวมีกี่ขา?', opts: ['2 ขา 🚶', '4 ขา 🐾', '6 ขา 🐜'], correct: 1 },
+      { emoji: '⏱️', q: '1 ชั่วโมง มีกี่นาที?', opts: ['30 นาที ⏱️', '60 นาที ⌛', '100 นาที 💯'], correct: 1 },
+      { emoji: '🩸', q: '18. เลือดของมนุษย์ปกติมีสีอะไร?', opts: ['สีแดง 🔴', 'สีน้ำเงิน 🔵', 'สีเขียว 🟢'], correct: 0 },
+      { emoji: '🐧', q: '19. เพนกวิน จัดเป็นสัตว์ประเภทใด?', opts: ['สัตว์เลื้อยคลาน 🦎', 'นก 🐧', 'ปลา 🐟'], correct: 1 },
+      { emoji: '🐼', q: '20. หมีแพนด้า ชอบกินอะไรเป็นอาหารหลัก?', opts: ['เนื้อสัตว์ 🥩', 'ไผ่ 🎍', 'กล้วย 🍌'], correct: 1 },
+      { emoji: '🧂', q: '21. เกลือมีรสชาติอย่างไร?', opts: ['หวาน 🍬', 'เค็ม 🧂', 'เปรี้ยว 🍋'], correct: 1 },
+      { emoji: '🍋', q: '22. มะนาวมีรสชาติอย่างไร?', opts: ['เปรี้ยว 🍋', 'ขม ☕', 'เผ็ด 🌶️'], correct: 0 },
+      { emoji: '🕷️', q: '23. แมงมุมมีกี่ขา?', opts: ['6 ขา 🐜', '8 ขา 🕷️', '10 ขา 🦀'], correct: 1 },
+      { emoji: '✈️', q: '24. ยานพาหนะชนิดใดใช้เดินทางบนอากาศ?', opts: ['เรือ 🚢', 'รถไฟ 🚆', 'เครื่องบิน ✈️'], correct: 2 },
+      { emoji: '📱', q: '25. สิ่งใดใช้สำหรับโทรติดต่อสื่อสาร?', opts: ['โทรศัพท์ 📱', 'พัดลม 🌬️', 'หม้อหุงข้าว 🍚'], correct: 0 },
+      { emoji: '🐸', q: '26. กบตอนเป็นตัวอ่อนเรียกว่าอะไร?', opts: ['ลูกเจี๊ยบ 🐥', 'ลูกอ๊อด 🐸', 'ลูกหนู 🐭'], correct: 1 },
+      { emoji: '🧊', q: '27. น้ำเปลี่ยนสถานะเป็นน้ำแข็งเมื่อโดนอะไร?', opts: ['ความร้อน 🔥', 'ความเย็น ❄️', 'ความลม 🌬️'], correct: 1 },
+      { emoji: '🌋', q: '28. ภูเขาไฟพ่นสิ่งใดออกมาตอนระเบิด?', opts: ['ลาวา 🌋', 'น้ำแข็ง 🧊', 'ดอกไม้ 🌸'], correct: 0 },
+      { emoji: '🎵', q: '29. ตัวโน้ตตัวแรกในสเกลคือตัวอะไร?', opts: ['โด (Do) 🎵', 'เร (Re) 🎶', 'มี (Mi) 🎼'], correct: 0 },
+      { 
+        emoji: '🤡', 
+        q: '30. ข้อสุดท้าย! คนที่ส่งลิงก์นี้ให้คุณ เป็นคนยังไง?', 
+        opts: ['หล่อ/สวย และฉลาดมาก ✨', 'หน้าตาธรรมดา 😐', 'นิสัยไม่ดี 💩'], 
+        correct: 0 
+      }
+    ];
+
+    function renderQuiz() {
+      const data = quizData[currentStep];
+      document.getElementById('stickerEmoji').innerText = data.emoji;
+      document.getElementById('quizTitle').innerText = `ข้อสอบความรู้ทั่วไป (ข้อที่ ${currentStep + 1}/30)`;
+      document.getElementById('questionText').innerText = data.q;
+      document.getElementById('feedbackMsg').innerText = '';
+
+      const box = document.getElementById('optionsBox');
+      box.innerHTML = '';
+
+      if (currentStep < 29) {
+        // ข้อ 1 - 29
+        data.opts.forEach((text, index) => {
+          const btn = document.createElement('button');
+          btn.className = 'btn-opt';
+          btn.innerText = text;
+          btn.onclick = () => checkAnswer(index);
+          box.appendChild(btn);
+        });
+      } else {
+        // ข้อ 30 (ข้อกวน: ปุ่มคำตอบถูกจะวิ่งหนี)
+        box.innerHTML = `
+          <button class="btn-opt btn-troll" id="correctBtn" onmouseover="dodge()" onclick="dodge()" ontouchstart="dodge()" style="top: 0px;">หล่อ/สวย และฉลาดมาก ✨ (คำตอบที่ถูก)</button>
+          <button class="btn-opt" onclick="checkAnswer(1)" style="margin-top: 55px;">หน้าตาธรรมดา 😐</button>
+          <button class="btn-opt" onclick="checkAnswer(2)">นิสัยไม่ดี 💩</button>
+        `;
+      }
+    }
+
+    function checkAnswer(selectedIndex) {
+      const data = quizData[currentStep];
+      const feedback = document.getElementById('feedbackMsg');
+
+      if (selectedIndex === data.correct) {
+        score++;
+        feedback.className = 'feedback correct';
+        feedback.innerText = 'ถูกต้องแล้ว! 🎉';
+      } else {
+        feedback.className = 'feedback wrong';
+        feedback.innerText = 'ตอบผิดนะเนี่ย! ❌';
+      }
+
+      setTimeout(() => {
+        currentStep++;
+        if (currentStep < quizData.length) {
+          renderQuiz();
+        } else {
+          showResult();
+        }
+      }, 700);
+    }
+
+    // ฟังก์ชั่นปุ่มเด้งหนีในข้อ 30
+    function dodge() {
+      dodgeCount++;
+      const btn = document.getElementById('correctBtn');
+      if (dodgeCount <= 3) {
+        const x = Math.random() * (window.innerWidth - 180) - (window.innerWidth / 2 - 90);
+        const y = Math.random() * (window.innerHeight - 200) - (window.innerHeight / 2 - 100);
+        btn.style.transform = `translate(${x}px, ${y}px)`;
+      } else {
+        score++;
+        alert('ตื๊อเก่งนักนะ! ยอมให้ตอบถูกก็ได้ 🤣');
+        currentStep++;
+        showResult();
+      }
+    }
+
+    function showResult() {
+      document.getElementById('quizStep').style.display = 'none';
+      document.getElementById('resultStep').style.display = 'block';
+      
+      document.getElementById('finalScore').innerText = `คะแนน: ${score} / 30`;
+
+      const titleEl = document.getElementById('finalTitle');
+      const descEl = document.getElementById('finalDesc');
+
+      if (score === 30) {
+        titleEl.innerText = 'ฉายา: เทพเจ้าแห่งความรู้ 🧠✨';
+        descEl.innerText = 'สุดยอดเกินไปแล้ว! ตอบถูกหมดทั้ง 30 ข้อ แถมชนะปุ่มเด้งหนีในข้อสุดท้ายได้ด้วย!';
+      } else if (score >= 20) {
+        titleEl.innerText = 'ฉายา: สมองระดับอัจฉริยะ 😎';
+        descEl.innerText = 'ความรู้แน่นสุดๆ ตอบถูกเกิน 20 ข้อขึ้นไป ถือว่าเก่งมาก!';
+      } else if (score >= 10) {
+        titleEl.innerText = 'ฉายา: พอตัวอยู่นะเนี่ย 👍';
+        descEl.innerText = 'ได้คะแนนปานกลาง เอาตัวรอดได้สบายๆ!';
+      } else {
+        titleEl.innerText = 'ฉายา: สมองพักผ่อน 💤';
+        descEl.innerText = 'ตอบผิดเยอะมาก! ไปนอนพักผ่อนด่วนเลยนะเพื่อน 🤣';
+      }
+    }
+
+    // เริ่มต้นทำข้อสอบ
+    renderQuiz();
+  </script>
+</body>
+</html>
